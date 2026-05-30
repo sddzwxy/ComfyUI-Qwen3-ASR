@@ -1,0 +1,412 @@
+{
+  "id": "162db172-debd-4969-9b45-d72597f4588a",
+  "revision": 0,
+  "last_node_id": 29,
+  "last_link_id": 33,
+  "nodes": [
+    {
+      "id": 11,
+      "type": "easy indexTTSGenerate",
+      "pos": [6845, 6981],
+      "size": [400, 668],
+      "flags": {},
+      "order": 17,
+      "mode": 4,
+      "inputs": [
+        {"label": "indextts_model", "name": "indextts_model", "type": "EASY_INDEXTTS_MODEL", "link": 10},
+        {"label": "reference_audio", "name": "reference_audio", "shape": 7, "type": "AUDIO", "link": 11},
+        {"label": "reference_audios", "name": "reference_audios", "shape": 7, "type": "AUDIOS", "link": null},
+        {"label": "emotions", "name": "emotions", "shape": 7, "type": "EASY_INDEXTTS_EMOTIONS", "link": 12},
+        {"label": "text", "name": "text", "type": "STRING", "widget": {"name": "text"}, "link": 13},
+        {"label": "unload_model", "name": "unload_model", "type": "BOOLEAN", "widget": {"name": "unload_model"}, "link": null},
+        {"label": "do_sample", "name": "do_sample", "type": "BOOLEAN", "widget": {"name": "do_sample"}, "link": null},
+        {"label": "temperature", "name": "temperature", "type": "FLOAT", "widget": {"name": "temperature"}, "link": null},
+        {"label": "top_p", "name": "top_p", "type": "FLOAT", "widget": {"name": "top_p"}, "link": null},
+        {"label": "top_k", "name": "top_k", "type": "INT", "widget": {"name": "top_k"}, "link": null},
+        {"label": "num_beams", "name": "num_beams", "type": "INT", "widget": {"name": "num_beams"}, "link": null},
+        {"label": "repetition_penalty", "name": "repetition_penalty", "type": "FLOAT", "widget": {"name": "repetition_penalty"}, "link": null},
+        {"label": "length_penalty", "name": "length_penalty", "type": "FLOAT", "widget": {"name": "length_penalty"}, "link": null},
+        {"label": "max_mel_tokens", "name": "max_mel_tokens", "type": "INT", "widget": {"name": "max_mel_tokens"}, "link": null},
+        {"label": "max_tokens_per_sentence", "name": "max_tokens_per_sentence", "type": "INT", "widget": {"name": "max_tokens_per_sentence"}, "link": null},
+        {"label": "speech_speed", "name": "speech_speed", "type": "FLOAT", "widget": {"name": "speech_speed"}, "link": null},
+        {"label": "seed", "name": "seed", "type": "INT", "widget": {"name": "seed"}, "link": null}
+      ],
+      "outputs": [
+        {"label": "audio", "name": "audio", "type": "AUDIO", "links": [16]},
+        {"label": "seed", "name": "seed", "type": "INT", "links": null},
+        {"label": "subtitle", "name": "subtitle", "type": "STRING", "links": null},
+        {"label": "subtitle_text", "name": "subtitle_text", "type": "STRING", "links": null}
+      ],
+      "properties": {"cnr_id": "comfyui-easy-indextts2", "ver": "e82998572e0604be9c64f9b91f38dd611f79e4b5", "Node name for S&R": "easy indexTTSGenerate"},
+      "widgets_values": ["", false, true, 0.8, 0.9, 30, 3, 10, 0, 1815, 120, 1, 1821015480, "randomize"]
+    },
+    {
+      "id": 10,
+      "type": "Text Utils - Join N-Elements of String List",
+      "pos": [5374, 7323],
+      "size": [290, 106],
+      "flags": {},
+      "order": 9,
+      "mode": 4,
+      "inputs": [
+        {"label": "texts", "name": "texts", "type": "STRING", "link": 9},
+        {"label": "separator", "name": "separator", "type": "STRING", "widget": {"name": "separator"}, "link": null},
+        {"label": "n", "name": "n", "type": "INT", "widget": {"name": "n"}, "link": null},
+        {"label": "start_from", "name": "start_from", "type": "COMBO", "widget": {"name": "start_from"}, "link": null}
+      ],
+      "outputs": [{"label": "TEXT", "name": "TEXT", "type": "STRING", "links": [14, 15]}],
+      "properties": {"cnr_id": "comfyui-textutils", "ver": "0205574631195bc2a00dcc96ae7598eaef0ce592", "Node name for S&R": "Text Utils - Join N-Elements of String List"},
+      "widgets_values": ["/", 1024, "front"]
+    },
+    {
+      "id": 13,
+      "type": "ShowText|pysssss",
+      "pos": [5763, 7492],
+      "size": [313, 496],
+      "flags": {},
+      "order": 13,
+      "mode": 4,
+      "inputs": [{"label": "text", "name": "text", "type": "STRING", "link": 14}],
+      "outputs": [{"label": "STRING", "name": "STRING", "shape": 6, "type": "STRING", "links": null}],
+      "properties": {"cnr_id": "comfyui-custom-scripts", "ver": "aac13aa7ce35b07d43633c3bbe654a38c00d74f5", "Node name for S&R": "ShowText|pysssss"},
+      "widgets_values": [""]
+    },
+    {
+      "id": 14,
+      "type": "Text",
+      "pos": [6017, 7251],
+      "size": [400, 200],
+      "flags": {},
+      "order": 14,
+      "mode": 4,
+      "inputs": [{"label": "text", "name": "text", "type": "STRING", "widget": {"name": "text"}, "link": 15}],
+      "outputs": [{"label": "STRING", "name": "STRING", "type": "STRING", "links": [13]}],
+      "properties": {"cnr_id": "kaytool", "ver": "f4c80b009194d51a13a94f06d37847110a174c52", "Node name for S&R": "Text"},
+      "widgets_values": [""]
+    },
+    {
+      "id": 15,
+      "type": "easy downloadIndexTTSAndLoadModel",
+      "pos": [6616, 6648],
+      "size": [270, 82],
+      "flags": {},
+      "order": 0,
+      "mode": 4,
+      "inputs": [
+        {"label": "start", "name": "start", "shape": 7, "type": "*", "link": null},
+        {"label": "model", "name": "model", "type": "COMBO", "widget": {"name": "model"}, "link": null},
+        {"label": "download_from", "name": "download_from", "type": "COMBO", "widget": {"name": "download_from"}, "link": null}
+      ],
+      "outputs": [{"label": "indextts_model", "name": "indextts_model", "type": "EASY_INDEXTTS_MODEL", "links": [10]}],
+      "properties": {"cnr_id": "comfyui-easy-indextts2", "ver": "e82998572e0604be9c64f9b91f38dd611f79e4b5", "Node name for S&R": "easy downloadIndexTTSAndLoadModel"},
+      "widgets_values": ["IndexTTS-2", "modelscope"]
+    },
+    {
+      "id": 21,
+      "type": "easy indexTTSEmotionText",
+      "pos": [5171, 6559],
+      "size": [400, 200],
+      "flags": {},
+      "order": 1,
+      "mode": 4,
+      "inputs": [
+        {"label": "reference_audio", "name": "reference_audio", "type": "AUDIO", "link": null},
+        {"label": "voice_name", "name": "voice_name", "type": "STRING", "widget": {"name": "voice_name"}, "link": null},
+        {"label": "description", "name": "description", "type": "STRING", "widget": {"name": "description"}, "link": null},
+        {"label": "use_random", "name": "use_random", "type": "BOOLEAN", "widget": {"name": "use_random"}, "link": null}
+      ],
+      "outputs": [{"label": "emotions", "name": "emotions", "type": "EASY_INDEXTTS_EMOTIONS", "links": []}],
+      "properties": {"cnr_id": "comfyui-easy-indextts2", "ver": "e82998572e0604be9c64f9b91f38dd611f79e4b5", "Node name for S&R": "easy indexTTSEmotionText"},
+      "widgets_values": ["", "", false]
+    },
+    {
+      "id": 12,
+      "type": "DocumentLoader",
+      "pos": [4970, 7122],
+      "size": [270, 82],
+      "flags": {},
+      "order": 2,
+      "mode": 4,
+      "inputs": [{"label": "file_path", "name": "file_path", "type": "COMBO", "widget": {"name": "file_path"}, "link": null}],
+      "outputs": [{"label": "parsed_text", "name": "parsed_text", "type": "STRING", "links": [9]}],
+      "properties": {"cnr_id": "ComfyUI-Documents", "ver": "a18dfd0e0276ef2e42afc686cc1bbff85c8a8363", "Node name for S&R": "DocumentLoader"},
+      "widgets_values": ["3d/"]
+    },
+    {
+      "id": 16,
+      "type": "SaveAudio",
+      "pos": [7341, 6826],
+      "size": [270, 112],
+      "flags": {},
+      "order": 19,
+      "mode": 4,
+      "inputs": [
+        {"label": "audio", "name": "audio", "type": "AUDIO", "link": 16},
+        {"label": "filename_prefix", "name": "filename_prefix", "type": "STRING", "widget": {"name": "filename_prefix"}, "link": null}
+      ],
+      "outputs": [],
+      "properties": {"cnr_id": "comfy-core", "ver": null, "Node name for S&R": "SaveAudio"},
+      "widgets_values": ["audio/ComfyUI"]
+    },
+    {
+      "id": 18,
+      "type": "easy indexTTSEmotionText",
+      "pos": [5967, 6960],
+      "size": [400, 200],
+      "flags": {},
+      "order": 10,
+      "mode": 4,
+      "inputs": [
+        {"label": "reference_audio", "name": "reference_audio", "type": "AUDIO", "link": 17},
+        {"label": "voice_name", "name": "voice_name", "type": "STRING", "widget": {"name": "voice_name"}, "link": null},
+        {"label": "description", "name": "description", "type": "STRING", "widget": {"name": "description"}, "link": null},
+        {"label": "use_random", "name": "use_random", "type": "BOOLEAN", "widget": {"name": "use_random"}, "link": null}
+      ],
+      "outputs": [{"label": "emotions", "name": "emotions", "type": "EASY_INDEXTTS_EMOTIONS", "links": [12]}],
+      "properties": {"cnr_id": "comfyui-easy-indextts2", "ver": "e82998572e0604be9c64f9b91f38dd611f79e4b5", "Node name for S&R": "easy indexTTSEmotionText"},
+      "widgets_values": ["", "", false]
+    },
+    {
+      "id": 17,
+      "type": "LoadAudio",
+      "pos": [5855, 6589],
+      "size": [270, 136],
+      "flags": {},
+      "order": 3,
+      "mode": 4,
+      "inputs": [
+        {"label": "audio", "name": "audio", "type": "COMBO", "widget": {"name": "audio"}, "link": null},
+        {"label": "upload", "name": "upload", "type": "AUDIOUPLOAD", "widget": {"name": "upload"}, "link": null}
+      ],
+      "outputs": [{"label": "AUDIO", "name": "AUDIO", "type": "AUDIO", "links": [11, 17]}],
+      "properties": {"cnr_id": "comfy-core", "ver": "0.20.1", "Node name for S&R": "LoadAudio"},
+      "widgets_values": ["5月27日 (2).MP3", null, null]
+    },
+    {
+      "id": 1,
+      "type": "CR Prompt Text",
+      "pos": [3793, 6179],
+      "size": [400, 200],
+      "flags": {},
+      "order": 4,
+      "mode": 4,
+      "inputs": [{"label": "prompt", "name": "prompt", "type": "STRING", "widget": {"name": "prompt"}, "link": null}],
+      "outputs": [{"label": "prompt", "name": "prompt", "type": "STRING", "links": []}, {"label": "show_help", "name": "show_help", "type": "STRING"}],
+      "properties": {"cnr_id": "ComfyUI_Comfyroll_CustomNodes", "ver": "d78b780ae43fcf8c6b7c6505e6ffb4584281ceca", "Node name for S&R": "CR Prompt Text"},
+      "widgets_values": [""]
+    },
+    {
+      "id": 7,
+      "type": "RunningHub_VoxCPM_Generate",
+      "pos": [5488, 4811],
+      "size": [400, 432],
+      "flags": {},
+      "order": 18,
+      "mode": 0,
+      "inputs": [
+        {"label": "model", "name": "model", "type": "VOXCPM_MODEL", "link": 8},
+        {"label": "reference_audio", "name": "reference_audio", "shape": 7, "type": "AUDIO", "link": 30},
+        {"label": "control_instruction", "name": "control_instruction", "type": "STRING", "widget": {"name": "control_instruction"}, "link": null},
+        {"label": "text", "name": "text", "type": "STRING", "widget": {"name": "text"}, "link": 31},
+        {"label": "cfg_value", "name": "cfg_value", "type": "FLOAT", "widget": {"name": "cfg_value"}, "link": null},
+        {"label": "inference_steps", "name": "inference_steps", "type": "INT", "widget": {"name": "inference_steps"}, "link": null},
+        {"label": "seed", "name": "seed", "type": "INT", "widget": {"name": "seed"}, "link": null},
+        {"label": "ultimate_clone", "name": "ultimate_clone", "shape": 7, "type": "BOOLEAN", "widget": {"name": "ultimate_clone"}, "link": null},
+        {"label": "reference_audio_text", "name": "reference_audio_text", "shape": 7, "type": "STRING", "widget": {"name": "reference_audio_text"}, "link": 21},
+        {"label": "normalize_text", "name": "normalize_text", "shape": 7, "type": "BOOLEAN", "widget": {"name": "normalize_text"}, "link": null},
+        {"label": "denoise_reference", "name": "denoise_reference", "shape": 7, "type": "BOOLEAN", "widget": {"name": "denoise_reference"}, "link": null},
+        {"label": "max_len", "name": "max_len", "shape": 7, "type": "INT", "widget": {"name": "max_len"}, "link": null},
+        {"label": "retry_badcase", "name": "retry_badcase", "shape": 7, "type": "BOOLEAN", "widget": {"name": "retry_badcase"}, "link": null}
+      ],
+      "outputs": [{"label": "audio", "name": "audio", "type": "AUDIO", "links": [33]}],
+      "properties": {"cnr_id": "rh_voxcpm", "ver": "0f55a043416ada7fdac37e19ea57333f58956bd5", "Node name for S&R": "RunningHub_VoxCPM_Generate"},
+      "widgets_values": ["", "", 2, 10, 667433250225759, "randomize", true, "", false, false, 4096, true]
+    },
+    {
+      "id": 24,
+      "type": "ShowText|pysssss",
+      "pos": [4663, 5284],
+      "size": [313, 496],
+      "flags": {},
+      "order": 15,
+      "mode": 0,
+      "inputs": [{"label": "text", "name": "text", "type": "STRING", "link": 26}],
+      "outputs": [{"label": "STRING", "name": "STRING", "shape": 6, "type": "STRING", "links": null}],
+      "properties": {"cnr_id": "comfyui-custom-scripts", "ver": "aac13aa7ce35b07d43633c3bbe654a38c00d74f5", "Node name for S&R": "ShowText|pysssss"},
+      "widgets_values": [""]
+    },
+    {
+      "id": 26,
+      "type": "DocumentLoader",
+      "pos": [4688, 4962],
+      "size": [270, 82],
+      "flags": {},
+      "order": 5,
+      "mode": 0,
+      "inputs": [{"label": "file_path", "name": "file_path", "type": "COMBO", "widget": {"name": "file_path"}, "link": null}],
+      "outputs": [{"label": "parsed_text", "name": "parsed_text", "type": "STRING", "links": [25]}],
+      "properties": {"cnr_id": "ComfyUI-Documents", "ver": "a18dfd0e0276ef2e42afc686cc1bbff85c8a8363", "Node name for S&R": "DocumentLoader"},
+      "widgets_values": [""]
+    },
+    {
+      "id": 23,
+      "type": "Text Utils - Join N-Elements of String List",
+      "pos": [4680, 5118],
+      "size": [290, 106],
+      "flags": {},
+      "order": 11,
+      "mode": 0,
+      "inputs": [
+        {"label": "texts", "name": "texts", "type": "STRING", "link": 25},
+        {"label": "separator", "name": "separator", "type": "STRING", "widget": {"name": "separator"}, "link": null},
+        {"label": "n", "name": "n", "type": "INT", "widget": {"name": "n"}, "link": null},
+        {"label": "start_from", "name": "start_from", "type": "COMBO", "widget": {"name": "start_from"}, "link": null}
+      ],
+      "outputs": [{"label": "TEXT", "name": "TEXT", "type": "STRING", "links": [26, 27]}],
+      "properties": {"cnr_id": "comfyui-textutils", "ver": "0205574631195bc2a00dcc96ae7598eaef0ce592", "Node name for S&R": "Text Utils - Join N-Elements of String List"},
+      "widgets_values": ["/", 1024, "front"]
+    },
+    {
+      "id": 27,
+      "type": "LoadAudio",
+      "pos": [4691, 4750],
+      "size": [270, 136],
+      "flags": {},
+      "order": 6,
+      "mode": 0,
+      "inputs": [
+        {"label": "audio", "name": "audio", "type": "COMBO", "widget": {"name": "audio"}, "link": null},
+        {"label": "upload", "name": "upload", "type": "AUDIOUPLOAD", "widget": {"name": "upload"}, "link": null}
+      ],
+      "outputs": [{"label": "AUDIO", "name": "AUDIO", "type": "AUDIO", "links": [29, 30]}],
+      "properties": {"cnr_id": "comfy-core", "ver": "0.20.1", "Node name for S&R": "LoadAudio"},
+      "widgets_values": ["5月27日 (2).MP3", null, null]
+    },
+    {
+      "id": 9,
+      "type": "RunningHub_VoxCPM_LoadModel",
+      "pos": [5023, 4776],
+      "size": [374, 112],
+      "flags": {},
+      "order": 7,
+      "mode": 0,
+      "inputs": [
+        {"label": "model_name", "name": "model_name", "type": "COMBO", "widget": {"name": "model_name"}, "link": null},
+        {"label": "optimize", "name": "optimize", "type": "BOOLEAN", "widget": {"name": "optimize"}, "link": null},
+        {"label": "lora_name", "name": "lora_name", "shape": 7, "type": "COMBO", "widget": {"name": "lora_name"}, "link": null}
+      ],
+      "outputs": [{"label": "model", "name": "model", "type": "VOXCPM_MODEL", "links": [8]}],
+      "properties": {"cnr_id": "rh_voxcpm", "ver": "0f55a043416ada7fdac37e19ea57333f58956bd5", "Node name for S&R": "RunningHub_VoxCPM_LoadModel"},
+      "widgets_values": ["VoxCPM2", false, "None"]
+    },
+    {
+      "id": 29,
+      "type": "SaveAudio",
+      "pos": [5512, 5361],
+      "size": [270, 112],
+      "flags": {},
+      "order": 20,
+      "mode": 0,
+      "inputs": [
+        {"label": "audio", "name": "audio", "type": "AUDIO", "link": 33},
+        {"label": "filename_prefix", "name": "filename_prefix", "type": "STRING", "widget": {"name": "filename_prefix"}, "link": null}
+      ],
+      "outputs": [],
+      "properties": {"cnr_id": "comfy-core", "ver": "0.21.1", "Node name for S&R": "SaveAudio"},
+      "widgets_values": ["audio/ComfyUI"]
+    },
+    {
+      "id": 25,
+      "type": "Text",
+      "pos": [5023, 5566],
+      "size": [400, 200],
+      "flags": {},
+      "order": 16,
+      "mode": 0,
+      "inputs": [{"label": "text", "name": "text", "type": "STRING", "widget": {"name": "text"}, "link": 27}],
+      "outputs": [{"label": "STRING", "name": "STRING", "type": "STRING", "links": [31]}],
+      "properties": {"cnr_id": "kaytool", "ver": "f4c80b009194d51a13a94f06d37847110a174c52", "Node name for S&R": "Text"},
+      "widgets_values": [""]
+    },
+    {
+      "id": 20,
+      "type": "Qwen3ASRTranscribe",
+      "pos": [5022, 5287],
+      "size": [400, 200],
+      "flags": {},
+      "order": 12,
+      "mode": 0,
+      "inputs": [
+        {"label": "model", "name": "model", "type": "QWEN3_ASR_MODEL", "link": 32},
+        {"label": "audio", "name": "audio", "type": "AUDIO", "link": 29},
+        {"label": "language", "name": "language", "shape": 7, "type": "COMBO", "widget": {"name": "language"}, "link": null},
+        {"label": "context", "name": "context", "shape": 7, "type": "STRING", "widget": {"name": "context"}, "link": null},
+        {"label": "return_timestamps", "name": "return_timestamps", "shape": 7, "type": "BOOLEAN", "widget": {"name": "return_timestamps"}, "link": null}
+      ],
+      "outputs": [
+        {"label": "text", "name": "text", "type": "STRING", "links": [21]},
+        {"label": "language", "name": "language", "type": "STRING", "links": null},
+        {"label": "timestamps", "name": "timestamps", "type": "STRING", "links": null}
+      ],
+      "properties": {"cnr_id": "comfyui-qwen-asr", "ver": "444e2a9364a335b603c365ebdf483263dd54d1e7", "Node name for S&R": "Qwen3ASRTranscribe"},
+      "widgets_values": ["auto", "", false]
+    },
+    {
+      "id": 28,
+      "type": "Qwen3ASRLoader",
+      "pos": [5015, 4979],
+      "size": [410, 246],
+      "flags": {},
+      "order": 8,
+      "mode": 0,
+      "inputs": [
+        {"label": "repo_id", "name": "repo_id", "type": "COMBO", "widget": {"name": "repo_id"}, "link": null},
+        {"label": "source", "name": "source", "type": "COMBO", "widget": {"name": "source"}, "link": null},
+        {"label": "precision", "name": "precision", "type": "COMBO", "widget": {"name": "precision"}, "link": null},
+        {"label": "attention", "name": "attention", "type": "COMBO", "widget": {"name": "attention"}, "link": null},
+        {"label": "forced_aligner", "name": "forced_aligner", "shape": 7, "type": "COMBO", "widget": {"name": "forced_aligner"}, "link": null},
+        {"label": "local_model_path", "name": "local_model_path", "shape": 7, "type": "STRING", "widget": {"name": "local_model_path"}, "link": null}
+      ],
+      "outputs": [{"label": "model", "name": "model", "type": "QWEN3_ASR_MODEL", "links": [32]}],
+      "properties": {"cnr_id": "comfyui-qwen-asr", "ver": "444e2a9364a335b603c365ebdf483263dd54d1e7", "Node name for S&R": "Qwen3ASRLoader"},
+      "widgets_values": ["mrfakename/Qwen3-ASR-Enhanced-v0.1", "HuggingFace", "bf16", "auto", "None", ""]
+    }
+  ],
+  "links": [
+    [8, 9, 0, 7, 0, "VOXCPM_MODEL"],
+    [9, 12, 0, 10, 0, "STRING"],
+    [10, 15, 0, 11, 0, "EASY_INDEXTTS_MODEL"],
+    [11, 17, 0, 11, 1, "AUDIO"],
+    [12, 18, 0, 11, 3, "EASY_INDEXTTS_EMOTIONS"],
+    [13, 14, 0, 11, 4, "STRING"],
+    [14, 10, 0, 13, 0, "STRING"],
+    [15, 10, 0, 14, 0, "STRING"],
+    [16, 11, 0, 16, 0, "AUDIO"],
+    [17, 17, 0, 18, 0, "AUDIO"],
+    [21, 20, 0, 7, 8, "STRING"],
+    [25, 26, 0, 23, 0, "STRING"],
+    [26, 23, 0, 24, 0, "STRING"],
+    [27, 23, 0, 25, 0, "STRING"],
+    [29, 27, 0, 20, 1, "AUDIO"],
+    [30, 27, 0, 7, 1, "AUDIO"],
+    [31, 25, 0, 7, 3, "STRING"],
+    [32, 28, 0, 20, 0, "QWEN3_ASR_MODEL"],
+    [33, 7, 0, 29, 0, "AUDIO"]
+  ],
+  "groups": [
+    {
+      "id": 1,
+      "title": "B站、Youtube：T8star-Aix",
+      "bounding": [2603, 3794, 4167, 308],
+      "color": "#3f789e",
+      "flags": {}
+    }
+  ],
+  "config": {},
+  "extra": {
+    "ue_links": [],
+    "ds": {"scale": 0.61, "offset": [-4106, -4362]},
+    "frontendVersion": "1.43.18"
+  },
+  "version": 0.4
+}
