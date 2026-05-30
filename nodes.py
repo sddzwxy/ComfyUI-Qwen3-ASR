@@ -15,6 +15,7 @@ folder_paths.add_model_folder_path("Qwen3-ASR", QWEN3_ASR_MODELS_DIR)
 QWEN3_ASR_MODELS = {
     "Qwen/Qwen3-ASR-1.7B": "Qwen3-ASR-1.7B",
     "Qwen/Qwen3-ASR-0.6B": "Qwen3-ASR-0.6B",
+    "Qwen3-ASR--Enhanced-v0.1": r"D:\MySoftware\2026-ComfyUI-V8.3\models\Qwen3-ASR",
 }
 
 QWEN3_FORCED_ALIGNERS = {
@@ -34,7 +35,10 @@ SUPPORTED_LANGUAGES = [
 
 
 def get_local_model_path(repo_id: str) -> str:
-    folder_name = QWEN3_ASR_MODELS.get(repo_id) or QWEN3_FORCED_ALIGNERS.get(repo_id) or repo_id.replace("/", "_")
+    model_entry = QWEN3_ASR_MODELS.get(repo_id) or QWEN3_FORCED_ALIGNERS.get(repo_id)
+    if model_entry and os.path.exists(model_entry) and os.path.isdir(model_entry):
+        return model_entry
+    folder_name = model_entry or repo_id.replace("/", "_")
     return os.path.join(QWEN3_ASR_MODELS_DIR, folder_name)
 
 
@@ -125,7 +129,7 @@ class Qwen3ASRLoader:
 
     def load_model(self, repo_id, source, precision, attention, forced_aligner="None", local_model_path=""):
         device = mm.get_torch_device()
-        
+
         dtype = torch.float32
         if precision == "bf16":
             if device.type == "mps":
@@ -135,27 +139,45 @@ class Qwen3ASRLoader:
                 dtype = torch.bfloat16
         elif precision == "fp16":
             dtype = torch.float16
-            
+
         if local_model_path and local_model_path.strip() != "":
             model_path = local_model_path.strip()
-            print(f"Loading from local path: {model_path}")
         else:
             local_path = get_local_model_path(repo_id)
-            if os.path.exists(local_path) and os.listdir(local_path):
-                model_path = local_path
-                print(f"Loading from ComfyUI models folder: {model_path}")
+            # If the path contains subdirectories, check if any contain model files
+            if os.path.exists(local_path) and os.path.isdir(local_path):
+                # Check for subdirectories that match the repo_id (case-insensitive and flexible matching)
+                repo_id_normalized = repo_id.replace("_", "").replace("-", "").lower()
+                matching_dirs = []
+                for d in os.listdir(local_path):
+                    full_path = os.path.join(local_path, d)
+                    if os.path.isdir(full_path):
+                        dir_name_normalized = d.replace("_", "").replace("-", "").lower()
+                        # Check if the directory name contains the repo_id or vice versa
+                        if repo_id_normalized in dir_name_normalized or dir_name_normalized in repo_id_normalized:
+                            matching_dirs.append(d)
+                if matching_dirs:
+                    # Use the first matching subdirectory
+                    model_path = os.path.join(local_path, matching_dirs[0])
+                else:
+                    subdirs = [d for d in os.listdir(local_path) if os.path.isdir(os.path.join(local_path, d))]
+                    if subdirs:
+                        # Use the first subdirectory that exists
+                        model_path = os.path.join(local_path, subdirs[0])
+                    else:
+                        model_path = local_path
             else:
                 model_path = download_model_to_comfyui(repo_id, source)
-        
+
         model_kwargs = dict(
-            dtype=dtype,
-            device_map=str(device),
             max_inference_batch_size=32,
             max_new_tokens=256,
         )
         if attention != "auto":
             model_kwargs["attn_implementation"] = attention
-            
+        if precision != "fp32":
+            model_kwargs["torch_dtype"] = dtype
+
         if forced_aligner and forced_aligner != "None":
             aligner_local = get_local_model_path(forced_aligner)
             if not (os.path.exists(aligner_local) and os.listdir(aligner_local)):
@@ -167,10 +189,29 @@ class Qwen3ASRLoader:
             )
             if attention != "auto":
                 model_kwargs["forced_aligner_kwargs"]["attn_implementation"] = attention
-        
-        print(f"Loading Qwen3-ASR model from {model_path}...")
+
         model = Qwen3ASRModel.from_pretrained(model_path, **model_kwargs)
-        
+
+        # Replace meta parameters with actual weights from checkpoint
+        meta_params = [(n, p) for n, p in model.model.named_parameters() if p.device.type == "meta"]
+        if meta_params:
+            bin_path = os.path.join(model_path, "pytorch_model.bin")
+            safetensors_path = os.path.join(model_path, "model.safetensors")
+            ckpt = None
+            if os.path.exists(bin_path):
+                ckpt = torch.load(bin_path, map_location="cpu", weights_only=False)
+            elif os.path.exists(safetensors_path):
+                from safetensors.torch import load_file
+                ckpt = load_file(safetensors_path)
+            if ckpt is not None:
+                model.model.load_state_dict(ckpt, strict=False, assign=True)
+
+        # Move model to device after loading
+        if device.type != "cpu" and hasattr(model, 'model'):
+            model.model = model.model.to(device=device, dtype=dtype)
+            model.device = device
+            model.dtype = dtype
+
         return (model,)
 
 
