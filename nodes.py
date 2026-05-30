@@ -15,7 +15,7 @@ folder_paths.add_model_folder_path("Qwen3-ASR", QWEN3_ASR_MODELS_DIR)
 QWEN3_ASR_MODELS = {
     "Qwen/Qwen3-ASR-1.7B": "Qwen3-ASR-1.7B",
     "Qwen/Qwen3-ASR-0.6B": "Qwen3-ASR-0.6B",
-    # "username/Qwen3-ASR-Enhanced-v0.1": "Qwen3-ASR-Enhanced-v0.1",  # Uncomment and replace after uploading to HF
+    "mrfakename/Qwen3-ASR-Enhanced-v0.1": "Qwen3-ASR-Enhanced-v0.1",
 }
 
 QWEN3_FORCED_ALIGNERS = {
