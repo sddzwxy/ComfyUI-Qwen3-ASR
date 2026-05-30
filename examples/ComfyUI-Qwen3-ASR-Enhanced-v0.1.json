@@ -2,256 +2,892 @@
   "id": "162db172-debd-4969-9b45-d72597f4588a",
   "revision": 0,
   "last_node_id": 29,
-  "last_link_id": 36,
+  "last_link_id": 37,
   "nodes": [
-    {
-      "id": 7,
-      "type": "RunningHub_VoxCPM_Generate",
-      "pos": [5488.725687152768, 4811.465979319067],
-      "size": [400, 432],
-      "flags": {},
-      "order": 8,
-      "mode": 0,
-      "inputs": [
-        {"label": "model", "name": "model", "type": "VOXCPM_MODEL", "link": 8},
-        {"label": "reference_audio", "name": "reference_audio", "shape": 7, "type": "AUDIO", "link": 30},
-        {"label": "control_instruction", "name": "control_instruction", "type": "STRING", "widget": {"name": "control_instruction"}, "link": null},
-        {"label": "text", "name": "text", "type": "STRING", "widget": {"name": "text"}, "link": 31},
-        {"label": "cfg_value", "name": "cfg_value", "type": "FLOAT", "widget": {"name": "cfg_value"}, "link": null},
-        {"label": "inference_steps", "name": "inference_steps", "type": "INT", "widget": {"name": "inference_steps"}, "link": null},
-        {"label": "seed", "name": "seed", "type": "INT", "widget": {"name": "seed"}, "link": null},
-        {"label": "ultimate_clone", "name": "ultimate_clone", "shape": 7, "type": "BOOLEAN", "widget": {"name": "ultimate_clone"}, "link": null},
-        {"label": "reference_audio_text", "name": "reference_audio_text", "shape": 7, "type": "STRING", "widget": {"name": "reference_audio_text"}, "link": 21},
-        {"label": "normalize_text", "name": "normalize_text", "shape": 7, "type": "BOOLEAN", "widget": {"name": "normalize_text"}, "link": null},
-        {"label": "denoise_reference", "name": "denoise_reference", "shape": 7, "type": "BOOLEAN", "widget": {"name": "denoise_reference"}, "link": null},
-        {"label": "max_len", "name": "max_len", "shape": 7, "type": "INT", "widget": {"name": "max_len"}, "link": null},
-        {"label": "retry_badcase", "name": "retry_badcase", "shape": 7, "type": "BOOLEAN", "widget": {"name": "retry_badcase"}, "link": null}
-      ],
-      "outputs": [
-        {"label": "audio", "name": "audio", "type": "AUDIO", "links": [33]}
-      ],
-      "properties": {
-        "cnr_id": "rh_voxcpm",
-        "ver": "0f55a043416ada7fdac37e19ea57333f58956bd5",
-        "Node name for S&R": "RunningHub_VoxCPM_Generate",
-        "ue_properties": {"widget_ue_connectable": {}, "input_ue_unconnectable": {}, "version": "7.8"}
-      },
-      "widgets_values": ["", "T8那个瓜娃子，一天到黑只晓得搞视频，耳都不耳你一下。", 2, 10, 667433250225759, "randomize", true, "", false, false, 4096, true]
-    },
     {
       "id": 24,
       "type": "ShowText|pysssss",
-      "pos": [4663.750407925248, 5284.810687929922],
-      "size": [313.843777182492, 496.1790919264413],
+      "pos": [
+        4663.750407925248,
+        5284.810687929922
+      ],
+      "size": [
+        313.843777182492,
+        496.1790919264413
+      ],
       "flags": {},
       "order": 6,
       "mode": 0,
-      "inputs": [{"label": "text", "name": "text", "type": "STRING", "link": 26}],
-      "outputs": [{"label": "STRING", "name": "STRING", "shape": 6, "type": "STRING", "links": null}],
+      "inputs": [
+        {
+          "label": "text",
+          "name": "text",
+          "type": "STRING",
+          "link": 26
+        }
+      ],
+      "outputs": [
+        {
+          "label": "STRING",
+          "name": "STRING",
+          "shape": 6,
+          "type": "STRING",
+          "links": null
+        }
+      ],
       "properties": {
         "cnr_id": "comfyui-custom-scripts",
         "ver": "aac13aa7ce35b07d43633c3bbe654a38c00d74f5",
         "Node name for S&R": "ShowText|pysssss",
-        "ue_properties": {"widget_ue_connectable": {}, "version": "7.8", "input_ue_unconnectable": {}}
+        "ue_properties": {
+          "widget_ue_connectable": {},
+          "version": "7.8",
+          "input_ue_unconnectable": {}
+        }
       },
-      "widgets_values": ["定额人工费：读懂单价里的"人工成本密码" 完整演讲稿\n同学们好！欢迎大家来到建筑工程计量与计价微课堂：定额人工费：读懂单价里的"人工成本密码" \n在工程造价实操工作中，人工费是我们最先接触、也是使用频率最高的核心费用，精准核算人工成本，是把控整体工程造价的基础，也是每一位造价从业者必备的岗位技能。\n很多同学初学造价时，都存在一个普遍误区，就是直接照搬定额人工单价，只会套公式计算，却完全不了解人工单价的组成与核算逻辑。今天这节课，我们就逐层拆解、细致分析，带大家彻底读懂定额人工费背后的成本逻辑，让大家不仅会做题、会算量，更能贴合岗位规范精准计价。\n首先，我们纠正核心认知误区，定额人工费并不是简单的单日务工工资，而是一套标准化的组合费用，主要包含五大组成部分，分别是计时工资或计件工资、津贴、补贴、特殊情况下支付的工资、工人自备工具、机具费用及辅助材料费企业和个人缴纳的社会保障费用\n第一部分：计时工资或计件工资\n指按计时工资标准和工作时间或已做工作按计件单价支付给个人的劳动报酬。这部分是人工费最核心、最基础的 "地基"，就是我们常说的基础劳动报酬。\n计时工资，就是按你干了多少天、每天的工资标准来算，比如砌筑工日工资 200 元，干 22 天，就是 4400 元；\n计件工资，就是按你干了多少活来算，比如抹灰工每平米 8 元，干了 500 平米，就是 4000 元。这部分，是工人完成本职施工任务最直接的劳动回报，也是我们理解人工费的起点。\n在我们常规的房屋建筑、市政配套工程计价工作中，统一优先采用计时工资标准核算人工费，这是行业通用规范，大家一定要牢记。\n\n第二部分：津贴、补贴\n津贴补贴用于补偿职工特殊及额外劳动损耗，同时涵盖物价补贴，保障薪资不受物价变动影响，常见类型包含流动施工、高温作业、高空作业津贴。\n广西高温津贴遵照桂人社规〔2021〕9号文件执行，每年6至10月，露天作业气温超35℃、室内作业高于33℃便可发放。月度标准250-300元，单日折算11.5-13.8元，费用纳入工资总额，不计入最低工资范畴。高空、流动施工类津贴，依照广西住建定额文件核算。各项津贴累加得出单日总额，结合施工天数分摊计入人工成本。\n以南宁外墙砌筑工为例，单日高空津贴40元、高温津贴12.5元、其他补贴15元，合计67.5元。月出勤22天，当月补贴总计1485元。\n该费用属于法定薪酬组成，不属于额外福利，工程造价核算中需全额计入人工成本。\n第三部分：特殊情况下支付的工资\n依据国家法律法规和政策规定，员工因病、工伤、产假、婚假、探亲假，或是停工学习、执行国家义务等特殊情形，按计时工资标准或其一定比例发放的工资。这部分工资不是 "额外福利"，而是受法律保护的法定薪酬，是企业用工成本里必须考虑的刚性支出。\n比如，建筑工人因工伤停工治疗期间，单位要按原工资标准发放待遇；女职工产假、职工婚假期间，也需依法保障工资发放。这些情况，即便工人没有参与施工，企业依然要支付相应薪酬。在定额计价中，这类费用已经按政策标准分摊计入人工成本，我们在做预算时，不能把它当成 "额外开支"，而要把它理解为合规用工成本的必要组成部分。\n第四部分：工人自备工具、机具费用及辅助材料费\n很多同学容易忽略这部分，其实它也是人工费的组成部分。工地上的瓦工、木工，很多小型工具比如瓦刀、灰桶、线坠，都是工人自己准备的；还有一些零星的辅助材料，比如捆扎绳、砂纸，定额里没包含的，也需要工人自己承担。这些工具的损耗费、辅助材料费，我们要折算成单日成本，计入人工费。比如瓦工每月工具损耗 60 元、辅助材料 30 元，一个月干 22 天，摊下来一天就是 4 块多钱。钱不多，但也是人工费里不可缺少的一项。\n\n第五部分：企业为生产工人缴纳和生产工人应缴纳的社会保障费用\n这部分，就是我们常说的 "五险一金"，是定额人工费里占比不小的一块。企业要为工人缴纳养老保险、医疗保险、失业保险、工伤保险、生育保险和住房公积金，工人个人也要缴纳一部分，这些都要按法定基数和比例核算，分摊到每天的人工成本里。按照广西 2026 年最新的缴费标准，养老保险单位缴纳 16%、个人缴纳 8%；医疗保险单位缴 6.5%-7.5%、个人缴 2%；失业保险单位和个人各缴 0.5%；工伤保险由单位按行业风险等级缴纳，建筑施工企业这类高风险行业，费率通常在 0.5%-0.95%，个人不缴；住房公积金单位和个人按 5%-12% 的相同比例缴纳。这部分费用，直接关系到工人的社保权益，也是定额人工费必须包含的法定费用。\n最后，我们把所有部分合在一起\n人工工日单价等于计时除以计件工资 加上 津贴补贴 加上 特殊情况下支付的工资 加上 自备工具及辅助材料费 加上 社保公积金\n了解完理论组成，我们进入核心实操环节，定额人工费等于人工工日消耗量乘以人工工日单价。整个计价流程逻辑清晰、操作简单，只需找准两个关键核心数据，一是对应定额分项工程的人工工日消耗量，二是对应专业工种的人工工日基准单价，两项数据直接相乘，即可精准算出分项工程人工费。\n我们结合广西定额实操案例演练一下，砌筑一立方米标准实心砖墙，依据广西现行消耗量定额标准，人工工日消耗量为 0.8 工日，按照本地建筑普工 80 元每工日的基准单价计算，代入公式可得，该分项工程人工费为 0.8 乘以 80，等于 64 元。大家可以清晰看到，只要精准查阅定额数据、严格规范套用计价公式，就能快速、准确完成基础人工费计价。\n这里重点强调一个高频易错考点，也是岗位实操的核心重点：定额人工单价并非永久固定、一成不变。广西住建主管部门会根据市场人工薪资变动，定期下发人工单价动态调整官方文件，发布最新调价系数，这是我们造价计价工作必须严格遵守的官方依据。\n比如：2025 年 1 月 1 日前，2013 版定额使用年限久，市场工人薪资大幅上涨，定额原有人工单价和实际用工成本偏差较大。为此广西出台桂建标〔2023〕7 号文件，按不同专业设定调价系数，以此核算贴合市场价的人工费。\n如今虽已启用新版定额计价，但该文件仍具备实用参考性。过往在建、竣工项目结算对账，或是处理造价相关争议时都会用到，务必熟记各专业对应的调价系数。\n造价工作讲究严谨规范、有据可依，我们必须及时跟进广西住建官方最新政策文件，坚决杜绝沿用老旧人工单价，避免出现计价漏项、金额偏差，这也是一名合格造价从业人员必备的职业素养。\n除此之外，大家还要掌握影响人工单价波动的两大核心因素。第一是地域差异，广西各市县经济发展水平、市场用工行情不同，人工基准薪资标准、地方专项补贴政策存在合理区域价差；第二是工种差异，钢筋工、模板工、抹灰工、架子工等不同工种，施工技术难易程度、现场作业安全风险等级不一样，严格遵循按劳定价、按技定价原则，技术难度越高、作业风险越大，对应定额人工单价也就越高。\n最后我们快速复盘本节课的核心重点，大家务必牢记三点内容。第一，定额人工费包含基本工资、津贴补贴、特殊工资分摊、工具耗材分摊、社保公积金分摊五项核心组成；第二，人工费核心计价公式为人工费等于工日消耗量乘以工日单价；第三，实操计价必须严格遵循广西最新官方文件，做好人工单价动态调价，保证计价结果合法、精准、合规。\n课后请大家完成实训作业，自行查阅广西现行建筑工程消耗量定额，查找现浇混凝土矩形梁项目的人工工日消耗量与对应基准单价，先核算基础人工费，再套用最新人工调价文件完成动态调价完整核算，扎实巩固理论知识和实操计价技能。\n本节课定额人工费的微课内容到此结束，下节课我们将继续学习材料费计算，逐步完善人材机计价体系，帮大家搭建完整、系统的造价核算思维，我们下节课再见！"]
+      "widgets_values": [
+        "定额人工费：读懂单价里的“人工成本密码” 完整演讲稿\n同学们好！欢迎大家来到建筑工程计量与计价微课堂：定额人工费：读懂单价里的“人工成本密码” \n在工程造价实操工作中，人工费是我们最先接触、也是使用频率最高的核心费用，精准核算人工成本，是把控整体工程造价的基础，也是每一位造价从业者必备的岗位技能。\n很多同学初学造价时，都存在一个普遍误区，就是直接照搬定额人工单价，只会套公式计算，却完全不了解人工单价的组成与核算逻辑。今天这节课，我们就逐层拆解、细致分析，带大家彻底读懂定额人工费背后的成本逻辑，让大家不仅会做题、会算量，更能贴合岗位规范精准计价。\n首先，我们纠正核心认知误区，定额人工费并不是简单的单日务工工资，而是一套标准化的组合费用，主要包含五大组成部分，分别是计时工资或计件工资、津贴、补贴、特殊情况下支付的工资、工人自备工具、机具费用及辅助材料费企业和个人缴纳的社会保障费用\n第一部分：计时工资或计件工资\n指按计时工资标准和工作时间或已做工作按计件单价支付给个人的劳动报酬。这部分是人工费最核心、最基础的 “地基”，就是我们常说的基础劳动报酬。\n计时工资，就是按你干了多少天、每天的工资标准来算，比如砌筑工日工资 200 元，干 22 天，就是 4400 元；\n计件工资，就是按你干了多少活来算，比如抹灰工每平米 8 元，干了 500 平米，就是 4000 元。这部分，是工人完成本职施工任务最直接的劳动回报，也是我们理解人工费的起点。\n在我们常规的房屋建筑、市政配套工程计价工作中，统一优先采用计时工资标准核算人工费，这是行业通用规范，大家一定要牢记。\n\n第二部分：津贴、补贴\n津贴补贴用于补偿职工特殊及额外劳动损耗，同时涵盖物价补贴，保障薪资不受物价变动影响，常见类型包含流动施工、高温作业、高空作业津贴。\n广西高温津贴遵照桂人社规〔2021〕9号文件执行，每年6至10月，露天作业气温超35℃、室内作业高于33℃便可发放。月度标准250-300元，单日折算11.5-13.8元，费用纳入工资总额，不计入最低工资范畴。高空、流动施工类津贴，依照广西住建定额文件核算。各项津贴累加得出单日总额，结合施工天数分摊计入人工成本。\n以南宁外墙砌筑工为例，单日高空津贴40元、高温津贴12.5元、其他补贴15元，合计67.5元。月出勤22天，当月补贴总计1485元。\n该费用属于法定薪酬组成，不属于额外福利，工程造价核算中需全额计入人工成本。\n第三部分：特殊情况下支付的工资\n依据国家法律法规和政策规定，员工因病、工伤、产假、婚假、探亲假，或是停工学习、执行国家义务等特殊情形，按计时工资标准或其一定比例发放的工资。这部分工资不是 “额外福利”，而是受法律保护的法定薪酬，是企业用工成本里必须考虑的刚性支出。\n比如，建筑工人因工伤停工治疗期间，单位要按原工资标准发放待遇；女职工产假、职工婚假期间，也需依法保障工资发放。这些情况，即便工人没有参与施工，企业依然要支付相应薪酬。在定额计价中，这类费用已经按政策标准分摊计入人工成本，我们在做预算时，不能把它当成 “额外开支”，而要把它理解为合规用工成本的必要组成部分。\n第四部分：工人自备工具、机具费用及辅助材料费\n很多同学容易忽略这部分，其实它也是人工费的组成部分。工地上的瓦工、木工，很多小型工具比如瓦刀、灰桶、线坠，都是工人自己准备的；还有一些零星的辅助材料，比如捆扎绳、砂纸，定额里没包含的，也需要工人自己承担。这些工具的损耗费、辅助材料费，我们要折算成单日成本，计入人工费。比如瓦工每月工具损耗 60 元、辅助材料 30 元，一个月干 22 天，摊下来一天就是 4 块多钱。钱不多，但也是人工费里不可缺少的一项。\n\n第五部分：企业为生产工人缴纳和生产工人应缴纳的社会保障费用\n这部分，就是我们常说的 “五险一金”，是定额人工费里占比不小的一块。企业要为工人缴纳养老保险、医疗保险、失业保险、工伤保险、生育保险和住房公积金，工人个人也要缴纳一部分，这些都要按法定基数和比例核算，分摊到每天的人工成本里。按照广西 2026 年最新的缴费标准，养老保险单位缴纳 16%、个人缴纳 8%；医疗保险单位缴 6.5%-7.5%、个人缴 2%；失业保险单位和个人各缴 0.5%；工伤保险由单位按行业风险等级缴纳，建筑施工企业这类高风险行业，费率通常在 0.5%-0.95%，个人不缴；住房公积金单位和个人按 5%-12% 的相同比例缴纳。这部分费用，直接关系到工人的社保权益，也是定额人工费必须包含的法定费用。\n最后，我们把所有部分合在一起\n人工工日单价等于计时除以计件工资 加上 津贴补贴 加上 特殊情况下支付的工资 加上 自备工具及辅助材料费 加上 社保公积金\n了解完理论组成，我们进入核心实操环节，定额人工费等于人工工日消耗量乘以人工工日单价。整个计价流程逻辑清晰、操作简单，只需找准两个关键核心数据，一是对应定额分项工程的人工工日消耗量，二是对应专业工种的人工工日基准单价，两项数据直接相乘，即可精准算出分项工程人工费。\n我们结合广西定额实操案例演练一下，砌筑一立方米标准实心砖墙，依据广西现行消耗量定额标准，人工工日消耗量为 0.8 工日，按照本地建筑普工 80 元每工日的基准单价计算，代入公式可得，该分项工程人工费为 0.8 乘以 80，等于 64 元。大家可以清晰看到，只要精准查阅定额数据、严格规范套用计价公式，就能快速、准确完成基础人工费计价。\n这里重点强调一个高频易错考点，也是岗位实操的核心重点：定额人工单价并非永久固定、一成不变。广西住建主管部门会根据市场人工薪资变动，定期下发人工单价动态调整官方文件，发布最新调价系数，这是我们造价计价工作必须严格遵守的官方依据。\n比如：2025 年 1 月 1 日前，2013 版定额使用年限久，市场工人薪资大幅上涨，定额原有人工单价和实际用工成本偏差较大。为此广西出台桂建标〔2023〕7 号文件，按不同专业设定调价系数，以此核算贴合市场价的人工费。\n如今虽已启用新版定额计价，但该文件仍具备实用参考性。过往在建、竣工项目结算对账，或是处理造价相关争议时都会用到，务必熟记各专业对应的调价系数。\n造价工作讲究严谨规范、有据可依，我们必须及时跟进广西住建官方最新政策文件，坚决杜绝沿用老旧人工单价，避免出现计价漏项、金额偏差，这也是一名合格造价从业人员必备的职业素养。\n除此之外，大家还要掌握影响人工单价波动的两大核心因素。第一是地域差异，广西各市县经济发展水平、市场用工行情不同，人工基准薪资标准、地方专项补贴政策存在合理区域价差；第二是工种差异，钢筋工、模板工、抹灰工、架子工等不同工种，施工技术难易程度、现场作业安全风险等级不一样，严格遵循按劳定价、按技定价原则，技术难度越高、作业风险越大，对应定额人工单价也就越高。\n最后我们快速复盘本节课的核心重点，大家务必牢记三点内容。第一，定额人工费包含基本工资、津贴补贴、特殊工资分摊、工具耗材分摊、社保公积金分摊五项核心组成；第二，人工费核心计价公式为人工费等于工日消耗量乘以工日单价；第三，实操计价必须严格遵循广西最新官方文件，做好人工单价动态调价，保证计价结果合法、精准、合规。\n课后请大家完成实训作业，自行查阅广西现行建筑工程消耗量定额，查找现浇混凝土矩形梁项目的人工工日消耗量与对应基准单价，先核算基础人工费，再套用最新人工调价文件完成动态调价完整核算，扎实巩固理论知识和实操计价技能。\n本节课定额人工费的微课内容到此结束，下节课我们将继续学习材料费计算，逐步完善人材机计价体系，帮大家搭建完整、系统的造价核算思维，我们下节课再见！"
+      ]
     },
     {
       "id": 26,
       "type": "DocumentLoader",
-      "pos": [4688.810004059248, 4962.157696943304],
-      "size": [270, 82],
+      "pos": [
+        4688.810004059248,
+        4962.157696943304
+      ],
+      "size": [
+        270,
+        82
+      ],
       "flags": {},
       "order": 0,
       "mode": 0,
-      "inputs": [{"label": "file_path", "name": "file_path", "type": "COMBO", "widget": {"name": "file_path"}, "link": null}],
-      "outputs": [{"label": "parsed_text", "name": "parsed_text", "type": "STRING", "links": [25]}],
+      "inputs": [
+        {
+          "label": "file_path",
+          "name": "file_path",
+          "type": "COMBO",
+          "widget": {
+            "name": "file_path"
+          },
+          "link": null
+        }
+      ],
+      "outputs": [
+        {
+          "label": "parsed_text",
+          "name": "parsed_text",
+          "type": "STRING",
+          "links": [
+            25
+          ]
+        }
+      ],
       "properties": {
         "cnr_id": "ComfyUI-Documents",
         "ver": "a18dfd0e0276ef2e42afc686cc1bbff85c8a8363",
         "Node name for S&R": "DocumentLoader",
-        "ue_properties": {"widget_ue_connectable": {"file_path": true}, "version": "7.8", "input_ue_unconnectable": {}}
+        "ue_properties": {
+          "widget_ue_connectable": {
+            "file_path": true
+          },
+          "version": "7.8",
+          "input_ue_unconnectable": {}
+        }
       },
-      "widgets_values": ["人工费演讲稿（最终）.docx"]
-    },
-    {
-      "id": 23,
-      "type": "Text Utils - Join N-Elements of String List",
-      "pos": [4680.597630194184, 5118.94648705529],
-      "size": [290.0005859375, 106],
-      "flags": {},
-      "order": 4,
-      "mode": 0,
-      "inputs": [
-        {"label": "texts", "name": "texts", "type": "STRING", "link": 25},
-        {"label": "separator", "name": "separator", "type": "STRING", "widget": {"name": "separator"}, "link": null},
-        {"label": "n", "name": "n", "type": "INT", "widget": {"name": "n"}, "link": null},
-        {"label": "start_from", "name": "start_from", "type": "COMBO", "widget": {"name": "start_from"}, "link": null}
-      ],
-      "outputs": [{"label": "TEXT", "name": "TEXT", "type": "STRING", "links": [26, 27]}],
-      "properties": {
-        "cnr_id": "comfyui-textutils",
-        "ver": "0205574631195bc2a00dcc96ae7598eaef0ce592",
-        "Node name for S&R": "Text Utils - Join N-Elements of String List",
-        "ue_properties": {"widget_ue_connectable": {"separator": true, "n": true, "start_from": true}, "version": "7.8", "input_ue_unconnectable": {}}
-      },
-      "widgets_values": ["/", 1024, "front"]
+      "widgets_values": [
+        "人工费演讲稿（最终）.docx"
+      ]
     },
     {
       "id": 27,
       "type": "LoadAudio",
-      "pos": [4691.270651351111, 4750.0497029449925],
-      "size": [270, 136],
+      "pos": [
+        4691.270651351111,
+        4750.0497029449925
+      ],
+      "size": [
+        270,
+        136
+      ],
       "flags": {},
       "order": 1,
       "mode": 0,
       "inputs": [
-        {"label": "audio", "name": "audio", "type": "COMBO", "widget": {"name": "audio"}, "link": null},
-        {"label": "audioUI", "name": "audioUI", "type": "AUDIO_UI", "widget": {"name": "audioUI"}, "link": null},
-        {"label": "upload", "name": "upload", "type": "AUDIOUPLOAD", "widget": {"name": "upload"}, "link": null}
+        {
+          "label": "audio",
+          "name": "audio",
+          "type": "COMBO",
+          "widget": {
+            "name": "audio"
+          },
+          "link": null
+        },
+        {
+          "label": "audioUI",
+          "name": "audioUI",
+          "type": "AUDIO_UI",
+          "widget": {
+            "name": "audioUI"
+          },
+          "link": null
+        },
+        {
+          "label": "upload",
+          "name": "upload",
+          "type": "AUDIOUPLOAD",
+          "widget": {
+            "name": "upload"
+          },
+          "link": null
+        }
       ],
-      "outputs": [{"label": "AUDIO", "name": "AUDIO", "type": "AUDIO", "links": [29, 30]}],
+      "outputs": [
+        {
+          "label": "AUDIO",
+          "name": "AUDIO",
+          "type": "AUDIO",
+          "links": [
+            29,
+            30
+          ]
+        }
+      ],
       "properties": {
         "cnr_id": "comfy-core",
         "ver": "0.20.1",
         "Node name for S&R": "LoadAudio",
-        "ue_properties": {"widget_ue_connectable": {"audio": true, "audioUI": true, "upload": true}, "version": "7.8", "input_ue_unconnectable": {}}
+        "ue_properties": {
+          "widget_ue_connectable": {
+            "audio": true,
+            "audioUI": true,
+            "upload": true
+          },
+          "version": "7.8",
+          "input_ue_unconnectable": {}
+        }
       },
-      "widgets_values": ["5月27日 (2).MP3", null, null]
+      "widgets_values": [
+        "5月27日 (2).MP3",
+        null,
+        null
+      ]
     },
     {
       "id": 9,
       "type": "RunningHub_VoxCPM_LoadModel",
-      "pos": [5023.526828096812, 4776.102037230353],
-      "size": [374.26618809373156, 112.5403196330617],
+      "pos": [
+        5023.526828096812,
+        4776.102037230353
+      ],
+      "size": [
+        374.26618809373156,
+        112.5403196330617
+      ],
       "flags": {},
       "order": 2,
       "mode": 0,
       "inputs": [
-        {"label": "model_name", "name": "model_name", "type": "COMBO", "widget": {"name": "model_name"}, "link": null},
-        {"label": "optimize", "name": "optimize", "type": "BOOLEAN", "widget": {"name": "optimize"}, "link": null},
-        {"label": "lora_name", "name": "lora_name", "shape": 7, "type": "COMBO", "widget": {"name": "lora_name"}, "link": null}
+        {
+          "label": "model_name",
+          "name": "model_name",
+          "type": "COMBO",
+          "widget": {
+            "name": "model_name"
+          },
+          "link": null
+        },
+        {
+          "label": "optimize",
+          "name": "optimize",
+          "type": "BOOLEAN",
+          "widget": {
+            "name": "optimize"
+          },
+          "link": null
+        },
+        {
+          "label": "lora_name",
+          "name": "lora_name",
+          "shape": 7,
+          "type": "COMBO",
+          "widget": {
+            "name": "lora_name"
+          },
+          "link": null
+        }
       ],
-      "outputs": [{"label": "model", "name": "model", "type": "VOXCPM_MODEL", "links": [8]}],
+      "outputs": [
+        {
+          "label": "model",
+          "name": "model",
+          "type": "VOXCPM_MODEL",
+          "links": [
+            8
+          ]
+        }
+      ],
       "properties": {
         "cnr_id": "rh_voxcpm",
         "ver": "0f55a043416ada7fdac37e19ea57333f58956bd5",
         "Node name for S&R": "RunningHub_VoxCPM_LoadModel",
-        "ue_properties": {"widget_ue_connectable": {}, "input_ue_unconnectable": {}, "version": "7.8"}
+        "ue_properties": {
+          "widget_ue_connectable": {},
+          "input_ue_unconnectable": {},
+          "version": "7.8"
+        }
       },
-      "widgets_values": ["VoxCPM2", false, "None"]
+      "widgets_values": [
+        "VoxCPM2",
+        false,
+        "None"
+      ]
     },
     {
       "id": 29,
       "type": "SaveAudio",
-      "pos": [5512.389206466018, 5361.06118327146],
-      "size": [270, 112],
+      "pos": [
+        5512.389206466018,
+        5361.06118327146
+      ],
+      "size": [
+        270,
+        112
+      ],
       "flags": {},
       "order": 9,
       "mode": 0,
       "inputs": [
-        {"label": "audio", "name": "audio", "type": "AUDIO", "link": 33},
-        {"label": "filename_prefix", "name": "filename_prefix", "type": "STRING", "widget": {"name": "filename_prefix"}, "link": null},
-        {"label": "audioUI", "name": "audioUI", "type": "AUDIO_UI", "widget": {"name": "audioUI"}, "link": null}
+        {
+          "label": "audio",
+          "name": "audio",
+          "type": "AUDIO",
+          "link": 33
+        },
+        {
+          "label": "filename_prefix",
+          "name": "filename_prefix",
+          "type": "STRING",
+          "widget": {
+            "name": "filename_prefix"
+          },
+          "link": null
+        },
+        {
+          "label": "audioUI",
+          "name": "audioUI",
+          "type": "AUDIO_UI",
+          "widget": {
+            "name": "audioUI"
+          },
+          "link": null
+        }
       ],
       "outputs": [],
       "properties": {
-        "ue_properties": {"widget_ue_connectable": {}, "input_ue_unconnectable": {}, "version": "7.8"},
+        "ue_properties": {
+          "widget_ue_connectable": {},
+          "input_ue_unconnectable": {}
+        },
         "cnr_id": "comfy-core",
         "ver": "0.21.1",
         "Node name for S&R": "SaveAudio"
       },
-      "widgets_values": ["audio/ComfyUI"]
-    },
-    {
-      "id": 25,
-      "type": "Text",
-      "pos": [5023.816630063274, 5566.421004454192],
-      "size": [400, 200],
-      "flags": {},
-      "order": 7,
-      "mode": 0,
-      "inputs": [{"label": "text", "name": "text", "type": "STRING", "widget": {"name": "text"}, "link": 27}],
-      "outputs": [{"label": "STRING", "name": "STRING", "type": "STRING", "links": [31]}],
-      "properties": {
-        "cnr_id": "kaytool",
-        "ver": "f4c80b009194d51a13a94f06d37847110a174c52",
-        "Node name for S&R": "Text",
-        "ue_properties": {"widget_ue_connectable": {"text": true}, "version": "7.8", "input_ue_unconnectable": {}}
-      },
-      "widgets_values": [""]
+      "widgets_values": [
+        "audio/ComfyUI"
+      ]
     },
     {
       "id": 20,
       "type": "Qwen3ASRTranscribe",
-      "pos": [5022.468476962441, 5287.410684426309],
-      "size": [400, 200],
+      "pos": [
+        5022.468476962441,
+        5287.410684426309
+      ],
+      "size": [
+        400,
+        200
+      ],
       "flags": {},
       "order": 5,
       "mode": 0,
       "inputs": [
-        {"label": "model", "name": "model", "type": "QWEN3_ASR_MODEL", "link": 32},
-        {"label": "audio", "name": "audio", "type": "AUDIO", "link": 29},
-        {"label": "language", "name": "language", "shape": 7, "type": "COMBO", "widget": {"name": "language"}, "link": null},
-        {"label": "context", "name": "context", "shape": 7, "type": "STRING", "widget": {"name": "context"}, "link": null},
-        {"label": "return_timestamps", "name": "return_timestamps", "shape": 7, "type": "BOOLEAN", "widget": {"name": "return_timestamps"}, "link": null}
+        {
+          "label": "model",
+          "name": "model",
+          "type": "QWEN3_ASR_MODEL",
+          "link": 32
+        },
+        {
+          "label": "audio",
+          "name": "audio",
+          "type": "AUDIO",
+          "link": 29
+        },
+        {
+          "label": "language",
+          "name": "language",
+          "shape": 7,
+          "type": "COMBO",
+          "widget": {
+            "name": "language"
+          },
+          "link": null
+        },
+        {
+          "label": "context",
+          "name": "context",
+          "shape": 7,
+          "type": "STRING",
+          "widget": {
+            "name": "context"
+          },
+          "link": null
+        },
+        {
+          "label": "return_timestamps",
+          "name": "return_timestamps",
+          "shape": 7,
+          "type": "BOOLEAN",
+          "widget": {
+            "name": "return_timestamps"
+          },
+          "link": null
+        }
       ],
       "outputs": [
-        {"label": "text", "name": "text", "type": "STRING", "links": [21]},
-        {"label": "language", "name": "language", "type": "STRING", "links": null},
-        {"label": "timestamps", "name": "timestamps", "type": "STRING", "links": null}
+        {
+          "label": "text",
+          "name": "text",
+          "type": "STRING",
+          "links": [
+            21
+          ]
+        },
+        {
+          "label": "language",
+          "name": "language",
+          "type": "STRING",
+          "links": null
+        },
+        {
+          "label": "timestamps",
+          "name": "timestamps",
+          "type": "STRING",
+          "links": null
+        }
       ],
       "properties": {
         "cnr_id": "comfyui-qwen-asr",
         "ver": "444e2a9364a335b603c365ebdf483263dd54d1e7",
         "Node name for S&R": "Qwen3ASRTranscribe",
-        "ue_properties": {"widget_ue_connectable": {}, "input_ue_unconnectable": {}, "version": "7.8"}
+        "ue_properties": {
+          "widget_ue_connectable": {},
+          "input_ue_unconnectable": {},
+          "version": "7.8"
+        }
       },
-      "widgets_values": ["auto", "", false]
+      "widgets_values": [
+        "auto",
+        "",
+        false
+      ]
     },
     {
       "id": 28,
       "type": "Qwen3ASRLoader",
-      "pos": [5015.101248800877, 4979.123852136934],
-      "size": [410.61687211083427, 246.67335614715284],
+      "pos": [
+        5015.101248800877,
+        4979.123852136934
+      ],
+      "size": [
+        410.61687211083427,
+        246.67335614715284
+      ],
       "flags": {},
       "order": 3,
       "mode": 0,
       "inputs": [
-        {"label": "repo_id", "name": "repo_id", "type": "COMBO", "widget": {"name": "repo_id"}, "link": null},
-        {"label": "source", "name": "source", "type": "COMBO", "widget": {"name": "source"}, "link": null},
-        {"label": "precision", "name": "precision", "type": "COMBO", "widget": {"name": "precision"}, "link": null},
-        {"label": "attention", "name": "attention", "type": "COMBO", "widget": {"name": "attention"}, "link": null},
-        {"label": "forced_aligner", "name": "forced_aligner", "shape": 7, "type": "COMBO", "widget": {"name": "forced_aligner"}, "link": null},
-        {"label": "local_model_path", "name": "local_model_path", "shape": 7, "type": "STRING", "widget": {"name": "local_model_path"}, "link": null}
+        {
+          "label": "repo_id",
+          "name": "repo_id",
+          "type": "COMBO",
+          "widget": {
+            "name": "repo_id"
+          },
+          "link": null
+        },
+        {
+          "label": "source",
+          "name": "source",
+          "type": "COMBO",
+          "widget": {
+            "name": "source"
+          },
+          "link": null
+        },
+        {
+          "label": "precision",
+          "name": "precision",
+          "type": "COMBO",
+          "widget": {
+            "name": "precision"
+          },
+          "link": null
+        },
+        {
+          "label": "attention",
+          "name": "attention",
+          "type": "COMBO",
+          "widget": {
+            "name": "attention"
+          },
+          "link": null
+        },
+        {
+          "label": "forced_aligner",
+          "name": "forced_aligner",
+          "shape": 7,
+          "type": "COMBO",
+          "widget": {
+            "name": "forced_aligner"
+          },
+          "link": null
+        },
+        {
+          "label": "local_model_path",
+          "name": "local_model_path",
+          "shape": 7,
+          "type": "STRING",
+          "widget": {
+            "name": "local_model_path"
+          },
+          "link": null
+        }
       ],
-      "outputs": [{"label": "model", "name": "model", "type": "QWEN3_ASR_MODEL", "links": [32]}],
+      "outputs": [
+        {
+          "label": "model",
+          "name": "model",
+          "type": "QWEN3_ASR_MODEL",
+          "links": [
+            32
+          ]
+        }
+      ],
       "properties": {
         "cnr_id": "comfyui-qwen-asr",
         "ver": "444e2a9364a335b603c365ebdf483263dd54d1e7",
         "Node name for S&R": "Qwen3ASRLoader",
-        "ue_properties": {"widget_ue_connectable": {}, "input_ue_unconnectable": {}, "version": "7.8"}
+        "ue_properties": {
+          "widget_ue_connectable": {},
+          "input_ue_unconnectable": {},
+          "version": "7.8"
+        }
       },
-      "widgets_values": ["Qwen3-ASR--Enhanced-v0.1", "HuggingFace", "bf16", "auto", "None", ""]
+      "widgets_values": [
+        "Qwen3-ASR--Enhanced-v0.1",
+        "HuggingFace",
+        "bf16",
+        "auto",
+        "None",
+        ""
+      ]
+    },
+    {
+      "id": 23,
+      "type": "Text Utils - Join N-Elements of String List",
+      "pos": [
+        4680.597630194184,
+        5118.94648705529
+      ],
+      "size": [
+        290.0005859375,
+        106
+      ],
+      "flags": {},
+      "order": 4,
+      "mode": 0,
+      "inputs": [
+        {
+          "label": "texts",
+          "name": "texts",
+          "type": "STRING",
+          "link": 25
+        },
+        {
+          "label": "separator",
+          "name": "separator",
+          "type": "STRING",
+          "widget": {
+            "name": "separator"
+          },
+          "link": null
+        },
+        {
+          "label": "n",
+          "name": "n",
+          "type": "INT",
+          "widget": {
+            "name": "n"
+          },
+          "link": null
+        },
+        {
+          "label": "start_from",
+          "name": "start_from",
+          "type": "COMBO",
+          "widget": {
+            "name": "start_from"
+          },
+          "link": null
+        }
+      ],
+      "outputs": [
+        {
+          "label": "TEXT",
+          "name": "TEXT",
+          "type": "STRING",
+          "links": [
+            26,
+            27
+          ]
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfyui-textutils",
+        "ver": "0205574631195bc2a00dcc96ae7598eaef0ce592",
+        "Node name for S&R": "Text Utils - Join N-Elements of String List",
+        "ue_properties": {
+          "widget_ue_connectable": {
+            "separator": true,
+            "n": true,
+            "start_from": true
+          },
+          "version": "7.8",
+          "input_ue_unconnectable": {}
+        }
+      },
+      "widgets_values": [
+        "/",
+        1024,
+        "front"
+      ]
+    },
+    {
+      "id": 7,
+      "type": "RunningHub_VoxCPM_Generate",
+      "pos": [
+        5488.725687152768,
+        4811.465979319067
+      ],
+      "size": [
+        400,
+        432
+      ],
+      "flags": {},
+      "order": 8,
+      "mode": 0,
+      "inputs": [
+        {
+          "label": "model",
+          "name": "model",
+          "type": "VOXCPM_MODEL",
+          "link": 8
+        },
+        {
+          "label": "reference_audio",
+          "name": "reference_audio",
+          "shape": 7,
+          "type": "AUDIO",
+          "link": 30
+        },
+        {
+          "label": "control_instruction",
+          "name": "control_instruction",
+          "type": "STRING",
+          "widget": {
+            "name": "control_instruction"
+          },
+          "link": null
+        },
+        {
+          "label": "text",
+          "name": "text",
+          "type": "STRING",
+          "widget": {
+            "name": "text"
+          },
+          "link": 37
+        },
+        {
+          "label": "cfg_value",
+          "name": "cfg_value",
+          "type": "FLOAT",
+          "widget": {
+            "name": "cfg_value"
+          },
+          "link": null
+        },
+        {
+          "label": "inference_steps",
+          "name": "inference_steps",
+          "type": "INT",
+          "widget": {
+            "name": "inference_steps"
+          },
+          "link": null
+        },
+        {
+          "label": "seed",
+          "name": "seed",
+          "type": "INT",
+          "widget": {
+            "name": "seed"
+          },
+          "link": null
+        },
+        {
+          "label": "ultimate_clone",
+          "name": "ultimate_clone",
+          "shape": 7,
+          "type": "BOOLEAN",
+          "widget": {
+            "name": "ultimate_clone"
+          },
+          "link": null
+        },
+        {
+          "label": "reference_audio_text",
+          "name": "reference_audio_text",
+          "shape": 7,
+          "type": "STRING",
+          "widget": {
+            "name": "reference_audio_text"
+          },
+          "link": 21
+        },
+        {
+          "label": "normalize_text",
+          "name": "normalize_text",
+          "shape": 7,
+          "type": "BOOLEAN",
+          "widget": {
+            "name": "normalize_text"
+          },
+          "link": null
+        },
+        {
+          "label": "denoise_reference",
+          "name": "denoise_reference",
+          "shape": 7,
+          "type": "BOOLEAN",
+          "widget": {
+            "name": "denoise_reference"
+          },
+          "link": null
+        },
+        {
+          "label": "max_len",
+          "name": "max_len",
+          "shape": 7,
+          "type": "INT",
+          "widget": {
+            "name": "max_len"
+          },
+          "link": null
+        },
+        {
+          "label": "retry_badcase",
+          "name": "retry_badcase",
+          "shape": 7,
+          "type": "BOOLEAN",
+          "widget": {
+            "name": "retry_badcase"
+          },
+          "link": null
+        }
+      ],
+      "outputs": [
+        {
+          "label": "audio",
+          "name": "audio",
+          "type": "AUDIO",
+          "links": [
+            33
+          ]
+        }
+      ],
+      "properties": {
+        "cnr_id": "rh_voxcpm",
+        "ver": "0f55a043416ada7fdac37e19ea57333f58956bd5",
+        "Node name for S&R": "RunningHub_VoxCPM_Generate",
+        "ue_properties": {
+          "widget_ue_connectable": {},
+          "input_ue_unconnectable": {},
+          "version": "7.8"
+        }
+      },
+      "widgets_values": [
+        "",
+        "1454\n",
+        2,
+        10,
+        667433250225759,
+        "randomize",
+        true,
+        "",
+        false,
+        false,
+        4096,
+        true
+      ]
+    },
+    {
+      "id": 25,
+      "type": "Text",
+      "pos": [
+        5023.816630063274,
+        5566.421004454192
+      ],
+      "size": [
+        400,
+        200
+      ],
+      "flags": {},
+      "order": 7,
+      "mode": 0,
+      "inputs": [
+        {
+          "label": "text",
+          "name": "text",
+          "type": "STRING",
+          "widget": {
+            "name": "text"
+          },
+          "link": 27
+        }
+      ],
+      "outputs": [
+        {
+          "label": "STRING",
+          "name": "STRING",
+          "type": "STRING",
+          "links": [
+            37
+          ]
+        }
+      ],
+      "properties": {
+        "cnr_id": "kaytool",
+        "ver": "f4c80b009194d51a13a94f06d37847110a174c52",
+        "Node name for S&R": "Text",
+        "ue_properties": {
+          "widget_ue_connectable": {
+            "text": true
+          },
+          "version": "7.8",
+          "input_ue_unconnectable": {}
+        }
+      },
+      "widgets_values": [
+        ""
+      ]
     }
   ],
   "links": [
-    [8, 9, 0, 7, 0, "VOXCPM_MODEL"],
-    [21, 20, 0, 7, 8, "STRING"],
-    [25, 26, 0, 23, 0, "STRING"],
-    [26, 23, 0, 24, 0, "STRING"],
-    [27, 23, 0, 25, 0, "STRING"],
-    [29, 27, 0, 20, 1, "AUDIO"],
-    [30, 27, 0, 7, 1, "AUDIO"],
-    [31, 25, 0, 7, 3, "STRING"],
-    [32, 28, 0, 20, 0, "QWEN3_ASR_MODEL"],
-    [33, 7, 0, 29, 0, "AUDIO"]
+    [
+      8,
+      9,
+      0,
+      7,
+      0,
+      "VOXCPM_MODEL"
+    ],
+    [
+      21,
+      20,
+      0,
+      7,
+      8,
+      "STRING"
+    ],
+    [
+      25,
+      26,
+      0,
+      23,
+      0,
+      "STRING"
+    ],
+    [
+      26,
+      23,
+      0,
+      24,
+      0,
+      "STRING"
+    ],
+    [
+      27,
+      23,
+      0,
+      25,
+      0,
+      "STRING"
+    ],
+    [
+      29,
+      27,
+      0,
+      20,
+      1,
+      "AUDIO"
+    ],
+    [
+      30,
+      27,
+      0,
+      7,
+      1,
+      "AUDIO"
+    ],
+    [
+      32,
+      28,
+      0,
+      20,
+      0,
+      "QWEN3_ASR_MODEL"
+    ],
+    [
+      33,
+      7,
+      0,
+      29,
+      0,
+      "AUDIO"
+    ],
+    [
+      37,
+      25,
+      0,
+      7,
+      3,
+      "STRING"
+    ]
   ],
   "groups": [
     {
       "id": 1,
       "title": "B站、Youtube：T8star-Aix",
-      "bounding": [2603.577009503405, 3794.7203050407343, 4167.669921875, 308.8702087402344],
+      "bounding": [
+        2603.577009503405,
+        3794.7203050407343,
+        4167.669921875,
+        308.8702087402344
+      ],
       "color": "#3f789e",
       "flags": {}
     }
@@ -259,7 +895,13 @@
   "config": {},
   "extra": {
     "ue_links": [],
-    "ds": {"scale": 0.28531167061100016, "offset": [-2901.3756647372547, -3532.039931633837]},
+    "ds": {
+      "scale": 0.6727499949325616,
+      "offset": [
+        -4355.1958107615055,
+        -4504.54109256023
+      ]
+    },
     "links_added_by_ue": [],
     "frontendVersion": "1.43.18",
     "VHS_latentpreview": false,
