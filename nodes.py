@@ -144,29 +144,26 @@ class Qwen3ASRLoader:
             model_path = local_model_path.strip()
         else:
             local_path = get_local_model_path(repo_id)
-            # If the path contains subdirectories, check if any contain model files
             if os.path.exists(local_path) and os.path.isdir(local_path):
-                # Check for subdirectories that match the repo_id (case-insensitive and flexible matching)
-                repo_id_normalized = repo_id.replace("_", "").replace("-", "").lower()
-                matching_dirs = []
-                for d in os.listdir(local_path):
-                    full_path = os.path.join(local_path, d)
-                    if os.path.isdir(full_path) and not d.startswith("."):
-                        dir_name_normalized = d.replace("_", "").replace("-", "").lower()
-                        # Check if the directory name contains the repo_id or vice versa
-                        if repo_id_normalized in dir_name_normalized or dir_name_normalized in repo_id_normalized:
-                            matching_dirs.append(d)
-                if matching_dirs:
-                    # Use the first matching subdirectory
-                    model_path = os.path.join(local_path, matching_dirs[0])
+                if os.path.isfile(os.path.join(local_path, "config.json")):
+                    model_path = local_path
                 else:
-                    # Skip hidden directories (starting with .)
-                    subdirs = [d for d in os.listdir(local_path) if os.path.isdir(os.path.join(local_path, d)) and not d.startswith(".")]
-                    if subdirs:
-                        # Use the first valid subdirectory
-                        model_path = os.path.join(local_path, subdirs[0])
+                    repo_id_normalized = repo_id.replace("_", "").replace("-", "").lower()
+                    matching_dirs = []
+                    for d in os.listdir(local_path):
+                        full_path = os.path.join(local_path, d)
+                        if os.path.isdir(full_path) and not d.startswith(".") and os.path.isfile(os.path.join(full_path, "config.json")):
+                            dir_name_normalized = d.replace("_", "").replace("-", "").lower()
+                            if repo_id_normalized in dir_name_normalized or dir_name_normalized in repo_id_normalized:
+                                matching_dirs.append(d)
+                    if matching_dirs:
+                        model_path = os.path.join(local_path, matching_dirs[0])
                     else:
-                        model_path = local_path
+                        subdirs = [d for d in os.listdir(local_path) if os.path.isdir(os.path.join(local_path, d)) and not d.startswith(".") and os.path.isfile(os.path.join(local_path, d, "config.json"))]
+                        if subdirs:
+                            model_path = os.path.join(local_path, subdirs[0])
+                        else:
+                            model_path = local_path
             else:
                 model_path = download_model_to_comfyui(repo_id, source)
 
