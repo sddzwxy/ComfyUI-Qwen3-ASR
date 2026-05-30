@@ -164,6 +164,8 @@ class Qwen3ASRLoader:
                             model_path = os.path.join(local_path, subdirs[0])
                         else:
                             model_path = local_path
+            elif os.path.isfile(os.path.join(QWEN3_ASR_MODELS_DIR, "config.json")):
+                model_path = QWEN3_ASR_MODELS_DIR
             else:
                 model_path = download_model_to_comfyui(repo_id, source)
 
