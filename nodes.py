@@ -151,7 +151,7 @@ class Qwen3ASRLoader:
                 matching_dirs = []
                 for d in os.listdir(local_path):
                     full_path = os.path.join(local_path, d)
-                    if os.path.isdir(full_path):
+                    if os.path.isdir(full_path) and not d.startswith("."):
                         dir_name_normalized = d.replace("_", "").replace("-", "").lower()
                         # Check if the directory name contains the repo_id or vice versa
                         if repo_id_normalized in dir_name_normalized or dir_name_normalized in repo_id_normalized:
@@ -160,9 +160,10 @@ class Qwen3ASRLoader:
                     # Use the first matching subdirectory
                     model_path = os.path.join(local_path, matching_dirs[0])
                 else:
-                    subdirs = [d for d in os.listdir(local_path) if os.path.isdir(os.path.join(local_path, d))]
+                    # Skip hidden directories (starting with .)
+                    subdirs = [d for d in os.listdir(local_path) if os.path.isdir(os.path.join(local_path, d)) and not d.startswith(".")]
                     if subdirs:
-                        # Use the first subdirectory that exists
+                        # Use the first valid subdirectory
                         model_path = os.path.join(local_path, subdirs[0])
                     else:
                         model_path = local_path
